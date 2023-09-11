@@ -1,0 +1,31 @@
+// Program to Arrange given numbers to form the biggest number
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+bool compare(const string &a,const string &b){
+    return (a+b)>(b+a);
+}
+
+string largestnumber(vector<int> &arr){
+    vector<string> arrstring;
+    for(int num:arr){
+        arrstring.push_back(to_string(num));
+    }
+    sort(arrstring.begin(),arrstring.end(),compare);
+    
+    string result;
+    for(string numstr:arrstring){
+        result+=numstr;
+    }
+    return result;
+}
+int main(){
+    vector<int> arr={54, 546, 548, 60};
+    string largest=largestnumber(arr);
+    cout<<" Largest Number Is "<<largest;
+    return 0;
+}
