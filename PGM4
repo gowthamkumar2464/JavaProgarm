@@ -1,0 +1,18 @@
+// program to find Maximum Product of Subarray
+
+#include<iostream>
+using namespace std;
+int main(){
+    int arr[]={-2,0,-1};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    int maxproduct=0;
+    int product=1;
+    for(int i=0;i<n;i++){
+        product*=arr[i];
+        if(product>maxproduct){
+            maxproduct=product;
+        }
+    }
+    cout<<"Maximum product is "<<maxproduct;
+    return 0;
+}
