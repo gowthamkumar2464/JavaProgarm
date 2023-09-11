@@ -1,0 +1,24 @@
+// program to check wheather given string is palindrome or not
+#include<iostream>
+#include<string>
+#include<algorithm>
+using namespace std;
+int main(){
+    string str="naman";
+    int n=str.length();
+    string str1;
+    for(int i=0;i<n;i++){
+        if((str[i]>='a'&&str[i]<='z')||(str[i]>='A'&&str[i]<='Z')){
+            str1.push_back(str[i]);
+        }
+    }
+    string str2;
+    for(int j=str1.length()-1;j>=0;j--){
+        str2.push_back(str1[j]);
+}
+if(str1==str2){
+    cout<<"Given string is Palindrome String ";
+}
+else{cout<<"Not Palindrome ";}
+return 0;
+}
