@@ -1,0 +1,17 @@
+// program to check wheather given two string are Anagram to each other or not
+
+#include<iostream>
+#include<string>
+#include<algorithm>
+using namespace std;
+int main(){
+    string str1="Hello";
+    string str2="Hello";
+    sort(str1.begin(),str1.end());
+    sort(str2.begin(),str2.end());
+    if(str1==str2){
+        cout<<"Given string is Anagram string ";
+    }
+    else{cout<<"Not Anagram string ";}
+    return 0;
+}
