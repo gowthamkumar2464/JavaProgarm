@@ -1,0 +1,24 @@
+// program to remove consecutive character in string
+
+#include<iostream>
+#include<string>
+#include<algorithm>
+using namespace std;
+
+string removeconsecutive(string str,int n){
+    string result;
+    result.push_back(str[0]);
+    for(int i=1;i<n;i++){
+        if(str[i]!=str[i-1]){
+            result.push_back(str[i]);
+        }
+    }
+    return result;
+}
+int main(){
+    string str="aabbccc";
+    int n=str.length();
+    string resultt=removeconsecutive(str,n);
+    cout<<resultt;
+    return 0;
+}
