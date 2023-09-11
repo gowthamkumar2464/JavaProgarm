@@ -1,0 +1,36 @@
+/ program to Find minimum number of merge operations to make an array palindrome
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int minimumnumber(int arr[], int n) {
+    int start = 0;
+    int end = n - 1;
+    int counter = 0;
+
+    while (start <= end) {
+        if (arr[start] == arr[end]) {
+            start++;
+            end--;
+        } else if (arr[start] < arr[end]) {
+            start++;
+            arr[start] += arr[start - 1];
+            counter++;
+        } else {
+            end--;
+            arr[end] += arr[end + 1];
+            counter++;
+        }
+    }
+
+    return counter;
+}
+
+int main() {
+    int arr[] = {11, 14, 15, 99};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int result = minimumnumber(arr, n);
+    cout << "Minimum number of merge operations to make the array palindrome is " << result << endl;
+    return 0;
+}
