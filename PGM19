@@ -1,0 +1,43 @@
+// program Palindrome
+
+#include <iostream>
+#include <string>
+#include <cctype>
+
+using namespace std;
+
+bool isPalindrome(string str) {
+    // Remove punctuation and symbols from the string
+    string cleanedStr;
+    for (char c : str) {
+        if (isalpha(c)) {
+            cleanedStr += tolower(c);
+        }
+    }
+
+    // Check if the cleaned string is a palindrome
+    int start = 0;
+    int end = cleanedStr.length() - 1;
+    while (start < end) {
+        if (cleanedStr[start] != cleanedStr[end]) {
+            return false;
+        }
+        start++;
+        end--;
+    }
+    return true;
+}
+
+int main() {
+    string input;
+    cout << "Enter a string: ";
+    getline(cin, input);
+
+    if (isPalindrome(input)) {
+        cout << "true" << endl;
+    } else {
+        cout << "false" << endl;
+    }
+
+    return 0;
+}
