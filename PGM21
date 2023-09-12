@@ -34,3 +34,10 @@ string KinkinderSubstring(const string& N, const string& K) {
 
     return result;
 }
+int main() {
+    cout << KinkinderSubstring("aaabaaddae", "aed") << endl;
+    cout << KinkinderSubstring("aabdccdbcacd", "aad") << endl;
+    cout << KinkinderSubstring("ahffaksfajeeubsne", "jefaa") << endl;
+
+    return 0;
+}
