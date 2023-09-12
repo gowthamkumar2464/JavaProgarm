@@ -1,0 +1,36 @@
+#include <iostream>
+#include <unordered_map>
+#include <climits>
+
+using namespace std;
+
+string KinkinderSubstring(const string& N, const string& K) {
+    unordered_map<char, int> charCount, windowCount;
+    int requiredCount = K.length(), minLength = INT_MAX, start = 0, foundCount = 0;
+    string result;
+
+    for (char ch : K)
+        charCount[ch]++;
+
+    for (int end = 0; end < N.length(); end++) {
+        char currentChar = N[end];
+        if (charCount.count(currentChar) && windowCount[currentChar]++ < charCount[currentChar])
+            foundCount++;
+
+        if (foundCount == requiredCount) {
+            while (!charCount.count(N[start]) || windowCount[N[start]] > charCount[N[start]]) {
+                if (charCount.count(N[start]))
+                    windowCount[N[start]]--;
+                start++;
+            }
+
+            int windowLength = end - start + 1;
+            if (windowLength < minLength) {
+                minLength = windowLength;
+                result = N.substr(start, minLength);
+            }
+        }
+    }
+
+    return result;
+}
