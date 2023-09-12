@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String inputLine = scanner.nextLine().trim();
+        String[] inputArray = inputLine.split(",");
+        int[] A = new int[inputArray.length];
+        for (int i = 0; i < inputArray.length; i++) {
+            A[i] = Integer.parseInt(inputArray[i]);
+        }
+        int T = scanner.nextInt();
+
+        int result = sortedIndex(A, T);
+        System.out.println(result);
+    }
+
+    public static int sortedIndex(int[] A, int T) {
+        // Sorting the array
+        Arrays.sort(A);
+
+        // Performing binary search to find the target value T
+        int left = 0;
+        int right = A.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (A[mid] == T) {
+                return mid;
+            } else if (A[mid] < T) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        // If T is not found, return the index where it would be inserted
+        return left;
+    }
+}
