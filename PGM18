@@ -1,0 +1,34 @@
+program to replace substring in given string
+
+#include <iostream>
+#include <string>
+
+void replaceSubstring(std::string& inputString, const std::string& oldSubstr, const std::string& newSubstr) {
+    size_t strLen = inputString.length();
+    size_t oldSubstrLen = oldSubstr.length();
+    size_t newSubstrLen = newSubstr.length();
+
+    if (oldSubstrLen == 0)
+        return;
+
+    size_t foundPos = 0;
+    while ((foundPos = inputString.find(oldSubstr, foundPos)) != std::string::npos) {
+        for (size_t i = 0; i < oldSubstrLen; i++) {
+            inputString[foundPos + i] = newSubstr[i];
+        }
+        foundPos += oldSubstrLen;
+    }
+}
+
+int main() {
+    std::string inputString = "java is fun";
+    std::string oldSubstring = "java";
+    std::string newSubstring = "C++";
+
+    replaceSubstring(inputString, oldSubstring, newSubstring);
+
+    std::cout << "Input: " << "java is fun" << std::endl;
+    std::cout << "Output: " << inputString << std::endl;
+
+    return 0;
+}
